@@ -60,7 +60,7 @@ const runners = [
 let fullNames = [];
 const names = runners.forEach(function(j){ 
   fullNames.push(j.first_name + " " + j.last_name)});                           
-// console.log(fullNames);
+console.log(fullNames);
 
 // ==== Challenge 2: Use .map() ====
 // The event director needs to have all the runners' first names in uppercase because the director BECAME DRUNK WITH POWER. Populate an array called `firstNamesAllCaps`. This array will contain just strings.
@@ -69,26 +69,36 @@ const names = runners.forEach(function(j){
 // put into firstNamesAllCaps
 let firstNamesAllCaps = runners.map(function(element){ 
   return element.first_name.toUpperCase()});
-// console.log(firstNamesAllCaps);
+console.log(firstNamesAllCaps);
 
 // ==== Challenge 3: Use .filter() ====
 // The large shirts won't be available for the event due to an ordering issue. We need a filtered version of the runners array, containing only those runners with large sized shirts so they can choose a different size. This will be an array of objects.
 // filter out large shirt runners
 // push into new array
 let runnersLargeSizeShirt = runners.filter(element => element.shirt_size === "L");
-// console.log(runnersLargeSizeShirt);
+console.log(runnersLargeSizeShirt);
 
 // ==== Challenge 4: Use .reduce() ====
 // The donations need to be tallied up and reported for tax purposes. Add up all the donations and save the total into a ticketPriceTotal variable.
-let ticketPriceTotal = 0;
+let ticketPriceTotal = runners.reduce((acc, cv) => acc + cv.donation, 0)
 console.log(ticketPriceTotal);
 
 // ==== Challenge 5: Be Creative ====
 // Now that you have used .forEach(), .map(), .filter(), and .reduce().  I want you to think of potential problems you could solve given the data set and the 5k fun run theme.  Try to create and then solve 3 unique problems using one or many of the array methods listed above.
 
 // Problem 1
+// The runners were on a plane and it crashed into the ocean. Sharks hate runners whose first name starts with the letter J. There were no runners whose first names start with the letter J that survived. Filter out the eaten runners into a new array.
+let jNames = runners.filter(j => j.first_name[0] === "J");
+console.log(jNames);
 
 // Problem 2
+// The sharks also hate anyone who donates less than $30. Get the e-mails and names of the runners who donated less so we can e-mail them to demandm more money.
+let cheapSkates = [];
+let find = runners.forEach(j => cheapSkates.push(j.first_name + ", " + j.email));
+console.log(cheapSkates);
 
 // Problem 3
+// We want to match the total donations, x2. Find out the total donations multiplied by 2 so we know how much to donate.
+let donationTotal = runners.reduce((acc, d)  => acc + (d.donation * 2), 0);
+console.log(donationTotal);
 
